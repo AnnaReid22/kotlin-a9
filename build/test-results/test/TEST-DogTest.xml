@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="DogTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-03-08T22:02:10" hostname="Annas-MacBook-Pro-6.local" time="0.053">
+  <properties/>
+  <testcase name="testBark()" classname="DogTest" time="0.053"/>
+  <system-out><![CDATA[Hello, my name is Dog
+woof!
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
