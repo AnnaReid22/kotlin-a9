@@ -1,1 +1,1 @@
-public class Env(bindings: ArrayList<Binding> ){}
+public class Env(val bindings: MutableList<Binding> ){}

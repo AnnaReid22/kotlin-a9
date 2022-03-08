@@ -2,9 +2,11 @@ abstract class ExprC {
 
 }
 
-public class NumC(num: Int) : ExprC(){}
-public class IdC(id: String) : ExprC(){}
-public class AppC(fn: ExprC, arg: ArrayList<ExprC>) : ExprC(){}
-public class LamC(params: ArrayList<IdC>, body: ExprC) : ExprC(){}
-public class StringC(s: String) : ExprC(){}
-public class IfC(self: ExprC, then: ExprC, otherwise: ExprC) : ExprC(){}
+public class NumC(val num: Int) : ExprC(){
+
+}
+public class IdC(val id: String) : ExprC(){}
+public class AppC(val fn: ExprC, val args: ArrayList<ExprC>) : ExprC(){}
+public class LamC(val params: ArrayList<IdC>, val body: ExprC) : ExprC(){}
+public class StringC(val s: String) : ExprC(){}
+public class IfC(val self: ExprC, val then: ExprC, val otherwise: ExprC) : ExprC(){}

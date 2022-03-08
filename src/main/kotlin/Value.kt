@@ -8,9 +8,9 @@ abstract class Value {
 //(struct NumV ([n : Real]) #:transparent)
 //(struct PrimV ([f : (-> (Listof Value) Value)])  #:transparent)
 
-public class CloV(params: ArrayList<String>, body: ExprC, env: Env): Value(){}
+public class CloV(val params: ArrayList<IdC>, val body: ExprC, val env: Env): Value(){}
 public class TrueV(): Value(){}
-public class False(): Value(){}
-public class StringV(s: String): Value(){}
-public class NumV(n: Int): Value(){}
-public class PrimV(f: (ArrayList<Value>) -> Value): Value(){}
+public class FalseV(): Value(){}
+public class StringV(val s: String): Value(){}
+public class NumV(val n: Int): Value(){}
+public class PrimV(val fn: (ArrayList<Value>) -> Value): Value(){}
