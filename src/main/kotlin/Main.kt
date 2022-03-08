@@ -1,14 +1,4 @@
 fun main() {
-
-
-
-//    val x = isEven(5)
-//    println(x)
-//    print10Numbers()
-//    val y = 3
-//    println(y.isOdd())
-//    val dog2 = Dog()
-//    dog2.bark()
 }
 fun interp(expr: ExprC, env: Env): Value {
     when(expr){
@@ -53,26 +43,4 @@ fun extendEnv(env: Env, s: ArrayList<IdC>, n: ArrayList<Value>): Env {
         env.bindings.add(Binding(s[i].id, n[i]))
     }
     return env
-}
-
-//;; extends an environment
-//(define (extend-env [envn : Env] [s : (Listof Symbol)] [n : (Listof Value)]) : Env
-//(cond
-//[(and (empty? s) (empty? n)) envn]
-//[(or (empty? s) (empty? n)) (error "TULI: Unequal Args and Parms.")]
-//[else (Env (cons (Binding (first s) (first n)) (Env-bindings (extend-env envn (rest s) (rest n)))))]))
-
-
-fun Int.isOdd(): Boolean {
-    return this % 2 == 1
-}
-
-fun isEven(number: Int): Boolean {
-    return number % 2 == 0
-}
-
-fun print10Numbers() {
-    for(i in 1..10) {
-        println(i)
-    }
 }
