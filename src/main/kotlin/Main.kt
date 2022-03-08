@@ -1,11 +1,14 @@
 fun main() {
-    val x = isEven(5)
-    println(x)
-    print10Numbers()
-    val y = 3
-    println(y.isOdd())
-    val dog2 = Dog()
-    dog2.bark()
+
+
+
+//    val x = isEven(5)
+//    println(x)
+//    print10Numbers()
+//    val y = 3
+//    println(y.isOdd())
+//    val dog2 = Dog()
+//    dog2.bark()
 }
 
 fun Int.isOdd(): Boolean {
