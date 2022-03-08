@@ -33,7 +33,7 @@ fun interp(expr: ExprC, env: Env): Value {
         }
         is IdC -> lookupEnv(env, expr.id)
     }
-    return TrueV();
+    return TrueV()
 }
 
 fun lookupEnv(env: Env, id: String): Value{
@@ -43,7 +43,6 @@ fun lookupEnv(env: Env, id: String): Value{
         }
     }
     throw Exception("TULI: Symbol Not Found.")
-    return FalseV();
 }
 
 fun extendEnv(env: Env, s: ArrayList<IdC>, n: ArrayList<Value>): Env {
