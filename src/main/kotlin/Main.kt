@@ -63,13 +63,6 @@ fun extendEnv(env: Env, s: ArrayList<IdC>, n: ArrayList<Value>): Env {
     return env
 }
 
-//;; extends an environment
-//(define (extend-env [envn : Env] [s : (Listof Symbol)] [n : (Listof Value)]) : Env
-//(cond
-//[(and (empty? s) (empty? n)) envn]
-//[(or (empty? s) (empty? n)) (error "TULI: Unequal Args and Parms.")]
-//[else (Env (cons (Binding (first s) (first n)) (Env-bindings (extend-env envn (rest s) (rest n)))))]))
-
 
 fun Int.isOdd(): Boolean {
     return this % 2 == 1
@@ -84,3 +77,67 @@ fun print10Numbers() {
         println(i)
     }
 }
+
+fun myAdd(Val1: Value, Val2: Value): Value {
+    if(Val1 is NumV && Val2 is NumV){
+        NumV(Val1.n + Val2.n)
+    }
+    else{
+        throw Exception("TULI: Invalid usage of + operator")
+    }
+}
+
+fun mySub(Val1: Value, Val2: Value): Value {
+    if(Val1 is NumV && Val2 is NumV){
+        NumV(Val1.n - Val2.n)
+    }
+    else{
+        throw Exception("TULI: Invalid usage of - operator")
+    }
+}
+
+fun myMult(Val1: Value, Val2: Value): Value {
+    if(Val1 is NumV && Val2 is NumV){
+        NumV(Val1.n * Val2.n)
+    }
+    else{
+        throw Exception("TULI: Invalid usage of * operator")
+    }
+}
+
+fun myDiv(Val1: Value, Val2: Value): Value {
+    if(Val1 is NumV && Val2 is NumV && Val2.n != 0){
+        NumV(Val1 / Val2)
+    }
+    else if(Val1 is NumV && Val2 is NumV && Val2.n == 0){
+        throw Exception("TULI: Divide by 0.")
+    }
+    else{
+        throw Exception("TULI: Invalid usage of / operator")
+    }
+}
+
+fun myLessThanOrEqual(Val1: Value, Val2: Value): Value {
+    if(Val1 is NumV && Val2 is NumV){
+       if(Val1.n <= Val2.n){
+            (TrueV)
+        }
+        else{
+           (FalseV)
+        }
+    }
+    else{
+        throw Exception("TULI: Invalid usage of  <=  operator")
+    }
+}
+
+fun serialize(val1 : Value): String {
+    when(val1){
+        (TrueV) -> "true"
+        (FalseV) -> "false"
+        (NumV) -> val1.n.toString()
+        (StringV) -> val1.s
+        (CloV) -> "#procedure"
+    }
+}
+
