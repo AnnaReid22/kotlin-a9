@@ -33,24 +33,16 @@ fun interp(expr: ExprC, env: Env): Value {
         }
         is IdC -> lookupEnv(env, expr.id)
     }
-    return TrueV();
+    return TrueV()
 }
 
-fun lookupEnvRec(env: Env, id: String) : Value{
-    if (env.bindings.isEmpty()){
-        throw Exception("TULI: Symbol Not Found.")
-    }
-    else if (id == env.bindings[0].name){
-        return env.bindings[0].value
-    }
-    return lookupEnvRec(Env(ArrayList(env.bindings.drop(1))), id)
-}
 fun lookupEnv(env: Env, id: String): Value{
     for (i in env.bindings.indices){
         if (env.bindings[i].name==id){
-
+            return env.bindings[i].value
         }
     }
+    throw Exception("TULI: Symbol Not Found.")
 }
 
 fun extendEnv(env: Env, s: ArrayList<IdC>, n: ArrayList<Value>): Env {
