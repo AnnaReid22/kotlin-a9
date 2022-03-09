@@ -25,22 +25,22 @@ class Main {
         is StringC -> return StringV(expr.s)
         is LamC -> return CloV(expr.params, expr.body, env)
         is IfC -> when(interp(expr.self, env)) {
-            is TrueV -> (interp(expr.then, env))
-            is FalseV -> (interp(expr.otherwise, env))
+            is TrueV -> return (interp(expr.then, env))
+            is FalseV -> return (interp(expr.otherwise, env))
             else -> (throw Exception("TULI: If statement requires boolean condition."))
         }
         is AppC -> when(val appc = interp(expr.fn, env)){
             is CloV -> {
                 val argVals = expr.args.map { arg -> (interp(arg, env)) }
                 val bodyEnv = extendEnv(appc.env, appc.params, argVals as ArrayList<Value>)
-                interp(appc.body, bodyEnv)
+                return interp(appc.body, bodyEnv)
             }
             is PrimV -> {
-                appc.fn(interp(expr.args[0], env), interp(expr.args[1], env))
+                return appc.fn(interp(expr.args[0], env), interp(expr.args[1], env))
             }
             else -> (throw Exception("TULI: attempt to call non-function"))
         }
-        is IdC -> lookupEnv(env, expr.id)
+        is IdC -> return lookupEnv(env, expr.id)
     }
     return TrueV()
 }
@@ -58,7 +58,7 @@ class Main {
     if (s.size != n.size) {
         throw Exception ("TULI: Unequal Args and Params.")
     }
-    for(i in env.bindings.indices) {
+    for(i in s.indices) {
         env.bindings.add(Binding(s[i].id, n[i]))
     }
     return env
