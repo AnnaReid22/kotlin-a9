@@ -1,4 +1,4 @@
-public final class Sexp(val value: String?){
+class Sexp(val value: String?){
     var vals: ArrayList<Sexp> = ArrayList();
     fun toIdC(): IdC{
         if (value == null ||
@@ -41,7 +41,7 @@ public final class Sexp(val value: String?){
                 else ->
                     throw Exception("TULI: Not an expression");
             }
-        }else{
+        } else {
             val num = value.toIntOrNull();
             if (num != null) return NumC(num);
             if (value.startsWith('"') && value.endsWith('"'))
